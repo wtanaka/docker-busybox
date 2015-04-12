@@ -8,15 +8,15 @@
     echo "Could not find directory $1."
     exit 1
 }
-docker build -t tarmaker $1 || {
+docker build -t tarmaker32 $1 || {
     echo "Something went wrong when building the builder. Aborting."
     exit 1
 }
 [ -f $1/rootfs.tar ] && mv $1/rootfs.tar $1/rootfs.tar.old
-docker run tarmaker cat /rootfs.tar > $1/rootfs.tar
+docker run tarmaker32 cat /rootfs.tar > $1/rootfs.tar
 rm -f rootfs.tar
 # We use cp rather than ln because ln doesn't work well on VBox shared folders.
 cp $1/rootfs.tar rootfs.tar
 ls -ltr rootfs.tar */rootfs.tar*
 echo "You can now build the busybox image, with:"
-echo "docker build -t busybox ."
+echo "docker build -t busybox32 ."

@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM wtanaka/trusty32
 # This will make it easier to upgrade to the next version of buildroot.
 # You might have to also update the busybox version at the end of this file!
 ENV BUILDROOT_VERSION 2014.11
@@ -19,9 +19,7 @@ RUN tar -zxf buildroot-$BUILDROOT_VERSION.tar.gz
 RUN ln -s buildroot-$BUILDROOT_VERSION buildroot
 WORKDIR /buildroot
 RUN make defconfig
-RUN sed -i "s/BR2_i386=y/# BR2_i386 is not set/" .config
 RUN for CFGVAR in \
-    BR2_x86_64 \
     BR2_TOOLCHAIN_BUILDROOT_LARGEFILE \
     BR2_TOOLCHAIN_BUILDROOT_INET_IPV6 \
     BR2_TOOLCHAIN_BUILDROOT_WCHAR \
