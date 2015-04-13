@@ -8,12 +8,13 @@
     echo "Could not find directory $1."
     exit 1
 }
-docker build -t tarmaker32 $1 || {
+TARMAKER_IMAGE=tarmaker32-$1
+docker build -t "$TARMAKER_IMAGE" $1 || {
     echo "Something went wrong when building the builder. Aborting."
     exit 1
 }
 [ -f $1/rootfs.tar ] && mv $1/rootfs.tar $1/rootfs.tar.old
-docker run tarmaker32 cat /rootfs.tar > $1/rootfs.tar
+docker run "$TARMAKER_IMAGE" cat /rootfs.tar > $1/rootfs.tar
 rm -f rootfs.tar
 # We use cp rather than ln because ln doesn't work well on VBox shared folders.
 cp $1/rootfs.tar rootfs.tar
