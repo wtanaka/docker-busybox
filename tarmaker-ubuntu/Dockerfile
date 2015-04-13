@@ -8,7 +8,6 @@ RUN touch etc/resolv.conf
 RUN cp /etc/nsswitch.conf etc/nsswitch.conf
 RUN echo root:x:0:0:root:/:/bin/sh > etc/passwd
 RUN echo root:x:0: > etc/group
-RUN ln -s lib lib64
 RUN ln -s bin sbin
 RUN cp /bin/busybox bin
 RUN $(which busybox) --install -s bin
