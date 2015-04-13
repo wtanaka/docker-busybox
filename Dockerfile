@@ -1,4 +1,4 @@
 FROM scratch
-MAINTAINER Jérôme Petazzoni <jerome@docker.com>
+MAINTAINER Wesley Tanaka <wtanaka@yahoo.com>
 ADD rootfs.tar /
 CMD ["/bin/sh"]

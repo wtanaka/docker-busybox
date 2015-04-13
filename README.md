@@ -40,8 +40,8 @@ The following tarmakers are available:
 # Use buildroot or ubuntu
 TARMAKER=ubuntu
 ./mkrootfs.sh tarmaker-ubuntu
-docker build -t busybox32 .
-docker run -t -i busybox32
+docker build -t wtanaka/busybox32 .
+docker run -t -i wtanaka/busybox32
 ```
 
 

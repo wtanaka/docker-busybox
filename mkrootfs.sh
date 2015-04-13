@@ -20,4 +20,4 @@ rm -f rootfs.tar
 cp $1/rootfs.tar rootfs.tar
 ls -ltr rootfs.tar */rootfs.tar*
 echo "You can now build the busybox image, with:"
-echo "docker build -t busybox32 ."
+echo "docker build -t wtanaka/busybox32 ."
